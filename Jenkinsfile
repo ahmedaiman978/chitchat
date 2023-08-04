@@ -2,7 +2,7 @@ pipeline {
  
   environment {
     dockerregistry = 'https://registry.hub.docker.com'
-    dockerhuburl = '2871/chitchat'
+    dockerhuburl = 'repository/docker/2871/chitchat/general'
     githuburl = 'ahmedaiman978/chitchat'
     dockerhubcrd = 'dockerhub'
     dockerImage = ''
@@ -65,12 +65,10 @@ pipeline {
  
     stage('Deploy k8s') {
       steps {
-        kubernetesDeploy(
-          kubeconfigId: 'k8s',
-          configs: 'k8s.yaml',
-          enableConfigSubstitution: true
-        )
-      }
-    }
-  }
+        withKubeConfig([credentialsId: 'k8s', serverUrl: 'https://192.168.0.35:8443']) {
+          sh 'kubectl apply -f k8s.yaml'
+       }
+     }
+   }
+ }
 }
