@@ -1,0 +1,29 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: chitchat
+spec:
+  replicas: 2
+  template:
+    metadata:
+      name: chitchat
+      labels:
+        app: chitchat
+    spec:
+      containers:
+      - image: $dockerhuburl:$BUILD_NUMBER
+        name: nodejs
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: loadbalancer
+spec:
+  type: LoadBalancer
+  externalIPs:
+  - 192.168.0.38
+  selector:
+    app: chitchat
+  ports:
+  - port: 8080
+    targetPort: 4141
