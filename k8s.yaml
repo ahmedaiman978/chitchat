@@ -27,4 +27,4 @@ spec:
   ports:
   - port: 8080
     targetPort: 4141
-    NodePort: 31456
+
