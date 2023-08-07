@@ -14,7 +14,7 @@ spec:
         app: chitchat
     spec:
       containers:
-      - image: "$(dockerhuburl):latest"
+      - image: 2871/chitchat:latest
         name: nodejs
         env: 
         - name: dockerhuburl
