@@ -2,7 +2,7 @@ pipeline {
  
   environment {
     dockerregistry = 'https://registry.hub.docker.com'
-    dockerhuburl = 'https://hub.docker.com/repository/docker/2871/chitchat'
+    dockerhuburl = '2871/chitchat'
     githuburl = 'ahmedaiman978/chitchat'
     dockerhubcrd = 'dockerhub'
     dockerImage = ''
