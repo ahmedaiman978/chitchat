@@ -14,14 +14,14 @@ spec:
         app: chitchat
     spec:
       containers:
-      - image: "$(dockerhub):latest"
+      - image: "$(docker):latest"
         name: nodejs
         env:
-          - name: dockerhub
+          - name: docker
             valueFrom:
               configMapKeyRef:
                 name: configmap
-                key: dockerhuburl
+                key: dockerhub
 
 ---
 apiVersion: v1
@@ -45,5 +45,5 @@ metadata:
   namespace: default
 data:
   # Configuration values can be set as key-value properties
-  dockerhuburl: 2871/chitchat
+  dockerhub: 2871/chitchat
 
