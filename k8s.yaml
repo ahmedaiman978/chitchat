@@ -46,4 +46,5 @@ metadata:
 data:
   # Configuration values can be set as key-value properties
   dockerhub: "2871/chitchat"
+  Optional: false
 
