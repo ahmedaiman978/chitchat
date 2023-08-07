@@ -14,14 +14,14 @@ spec:
         app: chitchat
     spec:
       containers:
-      - image: "$(docker):latest"
+      - image: 2871/chitchat:latest
         name: nodejs
-        env:
-          - name: docker
-            valueFrom:
-              configMapKeyRef:
-                name: configmap
-                key: dockerhub
+#        env:
+#          - name: docker
+#            valueFrom:
+#              configMapKeyRef:
+#                name: configmap
+#                key: dockerhub
 
 ---
 apiVersion: v1
@@ -37,14 +37,14 @@ spec:
   ports:
   - port: 8080
     targetPort: 4141
----
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: configmap
-  namespace: default
-data:
+#---
+#kind: ConfigMap
+#apiVersion: v1
+#metadata:
+#  name: configmap
+#  namespace: default
+#data:
   # Configuration values can be set as key-value properties
-  dockerhub: "2871/chitchat"
-  Optional: false
+#  dockerhub: "2871/chitchat"
+#  Optional: false
 
