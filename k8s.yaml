@@ -3,6 +3,9 @@ kind: Deployment
 metadata:
   name: chitchat
 spec:
+  selector:
+    matchLabels:
+      app: chitchat
   replicas: 2
   template:
     metadata:
