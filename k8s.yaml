@@ -37,7 +37,7 @@ spec:
   ports:
   - port: 8080
     targetPort: 4141
----
+----
 kind: ConfigMap
 apiVersion: v1
 metadata:
