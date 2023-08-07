@@ -16,9 +16,7 @@ spec:
       containers:
       - image: 2871/chitchat:latest
         name: nodejs
-        env: 
-        - name: dockerhuburl
-          value: "https://hub.docker.com/repository/docker/2871/chitchat"
+
 ---
 apiVersion: v1
 kind: Service
