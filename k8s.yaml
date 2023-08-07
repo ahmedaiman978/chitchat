@@ -14,8 +14,14 @@ spec:
         app: chitchat
     spec:
       containers:
-      - image: 2871/chitchat:latest
+      - image: "$(dockerhub):latest"
         name: nodejs
+        env:
+          - name: dockerhub
+            valueFrom:
+              configMapKeyRef:
+                name: configmap
+                key: dockerhuburl
 
 ---
 apiVersion: v1
@@ -24,11 +30,20 @@ metadata:
   name: loadbalancer
 spec:
   type: LoadBalancer
-#  externalIPs:
-#  - 192.168.0.35
+  externalIPs:
+  - 192.168.0.35
   selector:
     app: chitchat
   ports:
   - port: 8080
     targetPort: 4141
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: configmap
+  namespace: default
+data:
+  # Configuration values can be set as key-value properties
+  dockerhuburl: https://hub.docker.com/repository/docker/2871/chitchat/
 
